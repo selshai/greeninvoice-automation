@@ -1,0 +1,27 @@
+# === סודות — לעולם לא ב-git ===
+.env
+.env.*
+!.env.example
+
+# === נתוני ריצה מקומיים (כולל PII: שמות, מיילים, מספרי הזמנה) ===
+data/
+
+# === קבצי לקוחות / אקסל ===
+*.xlsx
+*.xls
+*.csv
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# === מערכת / עורך ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

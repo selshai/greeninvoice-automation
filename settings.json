@@ -1,0 +1,38 @@
+{
+  "environment": "production",
+  "document_type": 400,
+  "language": "he",
+  "currency": "ILS",
+  "document_vat_type": 2,
+  "income_vat_type": 2,
+  "service_description_template": "{event}",
+  "remarks_template": "{description}\nמספר הזמנה: {order_id}",
+  "send_email": true,
+  "email_subject": "",
+  "add_client_to_crm": false,
+  "skip_zero_amount": true,
+  "date_source": "order_date",
+  "limit_enabled": false,
+  "limit_count": 3,
+  "retry_only_errors": false,
+  "column_mapping": {
+    "order_id": "מספר הזמנה",
+    "date": "תאריך",
+    "first_name": "שם פרטי",
+    "last_name": "שם משפחה",
+    "phone": "טלפון",
+    "email": "מייל",
+    "event": "אירוע",
+    "amount": "סכום",
+    "payment_form": "צורת תשלום"
+  },
+  "payment_type_map": {
+    "אשראי": 3,
+    "מזומן": 1,
+    "צ'ק": 2,
+    "העברה בנקאית": 4,
+    "PayPal": 5,
+    "ביט": 10,
+    "default": 10
+  }
+}
