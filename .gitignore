@@ -25,3 +25,8 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+
+# === Claude Code ===
+CLAUDE.md
+claude.md
+.claude/
