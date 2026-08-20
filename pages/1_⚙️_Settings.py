@@ -88,19 +88,28 @@ doc_type = st.selectbox(
 if doc_type == 405:
     st.info("קבלה על תרומה מחייבת שלעסק בחשבונית ירוקה מוגדר אישור סעיף 46 (מוסד ציבורי מוכר). ודא זאת בהגדרות העסק במורנינג.")
 
+def _vat_index(options: list[int], value) -> int:
+    """אינדקס בטוח — ערך שמור שאינו ברשימה (למשל מקובץ הגדרות ישן) לא יפיל את הדף."""
+    return options.index(value) if value in options else 0
+
+
 col1, col2 = st.columns(2)
 with col1:
+    doc_vat_options = list(DOC_VAT_TYPES.keys())
     doc_vat = st.selectbox(
         "מע\"מ ברמת המסמך (vatType)",
-        options=list(DOC_VAT_TYPES.keys()),
-        index=list(DOC_VAT_TYPES.keys()).index(settings.get("document_vat_type", 0)),
+        options=doc_vat_options,
+        index=_vat_index(doc_vat_options, settings.get("document_vat_type", 0)),
         format_func=lambda k: f"{DOC_VAT_TYPES[k]} ({k})",
     )
+    if doc_vat == 2:
+        st.warning("עסק פטור ממע\"מ (עמותה / עוסק פטור) יקבל שגיאה 2409 (\"סוג מע\"מ לא תקין\") עם הערך 2. בחר 0.")
 with col2:
+    income_vat_options = list(INCOME_VAT_TYPES.keys())
     income_vat = st.selectbox(
         "מע\"מ ברמת שורת ההכנסה",
-        options=list(INCOME_VAT_TYPES.keys()),
-        index=list(INCOME_VAT_TYPES.keys()).index(settings.get("income_vat_type", 0)),
+        options=income_vat_options,
+        index=_vat_index(income_vat_options, settings.get("income_vat_type", 0)),
         format_func=lambda k: f"{INCOME_VAT_TYPES[k]} ({k})",
     )
 
