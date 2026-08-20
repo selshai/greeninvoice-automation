@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-title הפקת קבלות - חשבונית ירוקה
+title GreenInvoice Receipts
 cd /d "%~dp0"
 REM מפעיל את סקריפט ההכנה (PowerShell) עם התקנה אוטומטית ופס התקדמות
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0setup.ps1"
